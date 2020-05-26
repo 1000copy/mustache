@@ -1,4 +1,4 @@
-User name:$root$true
+User name:$root
 User password:$admin
 Warning$
 MA5680T$enable
