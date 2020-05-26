@@ -1,1 +1,3 @@
 # mustache
+
+node init 
