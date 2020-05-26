@@ -1,0 +1,26 @@
+{
+  "name": "mustachee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "handlebars": "^4.7.6",
+    "mustache": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1000copy/mustache.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1000copy/mustache/issues"
+  },
+  "homepage": "https://github.com/1000copy/mustache#readme"
+}
