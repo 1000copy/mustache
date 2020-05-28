@@ -5,9 +5,13 @@ var expects =[
   {expect:/ZXAN/,send:'en'},
   {expect:/Password/,send:'zxr10'},
   {expect:/ZXAN#/,send:'con t'},
+  {expect:/ZXAN/,send:'exit'},
+  {expect:/ZXAN/,send:'exit'},
+  {expect:/saving/,send:'yes'},
   ]
 const net = require('net');
-
+var t
+var interval = 1000
 let socketclient = net.createConnection({
       host: options.host,
       port: options.port || 23,
@@ -20,14 +24,21 @@ let socketclient = net.createConnection({
       if(expects.length >= step + 1){
         var item = expects[step]        
         if(data.toString().match(item.expect)){          
+          clearTimeout(t)
           socketclient.write(`${item.send}\n`)
           process.stdout.write(`${item.send}\n`);
           step++
+        }else{
+          t = setTimeout(function(){
+            console.log('timeout,'+expects[step].expect)
+            process.exit()
+          },interval)
         }
       }
     });
     socketclient.on("close", function () {
       console.log('close');
+      process.exit()
     });
 
     socketclient.on("error", function (err) {
