@@ -17,7 +17,7 @@ onconnection=(options)=>{
 	var t	
 	let step = 0;
     var t
-    var interval = options.timeout || 1000
+    var interval = options.timeout || 1000    
 	let telnet = net.createConnection(options, function () {		
 		console.log('connected');
 	})
@@ -28,19 +28,23 @@ onconnection=(options)=>{
 	  	data = data.toString().slice(16)
 	  	trimhead = true
 	  }
+	  // console.log(`data:${data}`)
 	  ws.send(data.toString())	 
 	  if(options.expects.length >= step + 1){
         var item = options.expects[step]        
         if(data.toString().match(new RegExp(item.expect))){
           clearTimeout(t)
           telnet.write(`${item.send}\n`)
-          // process.stdout.write(`${item.send}\n`);
-          ws.send(`${item.send}`)
+          // console.log(`match:${item.send}`)
+          if(!options.hasEcho)
+          	ws.send(`${item.send}`)
           step++
         }else{
           t = setTimeout(function(){
-            console.log('timeout,'+options.expects[step].expect)
-            process.exit()
+            console.log('timeout,line:'+ step+ 'expect:')
+            if(options.expects[step])
+            	console.log(options.expects[step].expect)
+            // process.exit()
           },interval)
         }
       } 

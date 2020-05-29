@@ -11,18 +11,23 @@
 
     // Connection opened
     socket.addEventListener('open', function (event) {
-        // socket.send('Hello Server!');
-        var options = {host:"10.27.10.195",port:23,timeout:1000,expects :[
-          {expect:"Username",send:'zte'},
-          {expect:"Password",send:'zte'},
-          {expect:"ZXAN",send:'en'},
-          {expect:"Password",send:'zxr10'},
-          {expect:"ZXAN#",send:'con t'},
-          // {expect:/ZXAN/,send:'exit'},
-          // {expect:/ZXAN/,send:'exit'},
-          // {expect:/saving/,send:'yes'},
+        var arr = [
+          {host:"10.10.1.12",port:23,timeout:1000,hasEcho:true,expects :[
+            {expect:"User name",send:'lcj123'},
+            {expect:"User password",send:'admin123'},
+            {expect:"MA5680T",send:'quit'},
+            {expect:"out",send:'y'}
+          ]},
+          {host:"10.27.10.195",port:23,timeout:1000,hasEcho:false,expects :[
+            {expect:"Username",send:'zte'},
+            {expect:"Password",send:'zte'},
+            {expect:"ZXAN",send:'en'},
+            {expect:"Password",send:'zxr10'},
+            {expect:"ZXAN",send:'exit'},
+            {expect:"saving",send:'yes'},
           ]}
-        socket.send(JSON.stringify(options));
+          ]
+        socket.send(JSON.stringify(arr[0]));
     });
 
     // Listen for messages
