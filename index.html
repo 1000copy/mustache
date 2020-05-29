@@ -17,9 +17,9 @@
     socket.addEventListener('message', function (event) {
         console.log('Message from server ', event.data);
         var line = event.data
-        term.write('\r\n')
+        // term.write('\r\n')
         term.write(line); 
-        prompt(term);               
+        // prompt(term);               
     });
      var term = new Terminal({focusKeys:true});
      term.open(document.getElementById('terminal'));
@@ -46,6 +46,7 @@
               // term.write('\r\n')
               // term.write(line);
               socket.send(line);
+              console.log('send to server:'+line)
               line = ''              
           } else if (e.domEvent.keyCode === 8) {
               // Do not delete the prompt
