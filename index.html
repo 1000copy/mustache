@@ -8,9 +8,21 @@
     <div id="terminal"></div>
     <script>    
     const socket = new WebSocket('ws://'+window.location.host+'/echo');
+
     // Connection opened
     socket.addEventListener('open', function (event) {
         // socket.send('Hello Server!');
+        var options = {host:"10.27.10.195",port:23,timeout:1000,expects :[
+          {expect:"Username",send:'zte'},
+          {expect:"Password",send:'zte'},
+          {expect:"ZXAN",send:'en'},
+          {expect:"Password",send:'zxr10'},
+          {expect:"ZXAN#",send:'con t'},
+          // {expect:/ZXAN/,send:'exit'},
+          // {expect:/ZXAN/,send:'exit'},
+          // {expect:/saving/,send:'yes'},
+          ]}
+        socket.send(JSON.stringify(options));
     });
 
     // Listen for messages
@@ -34,9 +46,9 @@
       term.prompt = () => {
           term.write('\r\n$ ');
       };
-      term.writeln('Welcome to xterm.js');      
-      term.writeln('');
-      prompt(term);
+      // term.writeln('Welcome to xterm.js');      
+      // term.writeln('');
+      // prompt(term);
       var line = ''
       term.onKey(e => {
           const printable = !e.domEvent.altKey && !e.domEvent.altGraphKey && !e.domEvent.ctrlKey && !e.domEvent.metaKey;

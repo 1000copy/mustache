@@ -10,8 +10,7 @@ var expects =[
   {expect:/saving/,send:'yes'},
   ]
 const net = require('net');
-var t
-var interval = 1000
+
 let socketclient = net.createConnection({
       host: options.host,
       port: options.port || 23,
@@ -19,6 +18,8 @@ let socketclient = net.createConnection({
       console.log('connected');
     })
     let step = 0;
+    var t
+    var interval = 1000
     socketclient.on("data", function (data) {            
       process.stdout.write(`${data}`.trim());      
       if(expects.length >= step + 1){
