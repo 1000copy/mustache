@@ -8,7 +8,7 @@
 
 另外一个是在Web浏览器内创建访问telnet终端的方法,执行
 
-   node index.js
+    node index.js
 
 且在浏览器内打开 localhost:3000/index.html 可以看到Web telnet 界面。
 
