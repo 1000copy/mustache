@@ -1,17 +1,27 @@
 # mustache
 
-node init 
+这个项目想要演示两个方法，一个是执行自动化的OLT telnet的方法，一个是在Web浏览器内创建访问telnet终端的方法。
 
-#好处
+    node init 
+    
+会执行脚本，脚本文件样本在[script](data/huawei.cmd),参数文件在[options](data/huawei.json)
 
-可以自动化执行脚本。顺带带来的好处：
+执行
+
+   node index.js
+
+且在浏览器内打开 localhost:3000/index.html 可以看到Web telnet 界面。
+
+# 好处
+
+可以自动化执行脚本。顺带带来的好处
 不需要一遍遍的输入用户名和密码。之前putty做不到的。
 
 # 知识点
 
-Browser端使用了终端模块xterm.js
-使用了express-ws 的Websocket模块
-使用了net标准库访问telnet，就足够了
+- Browser端使用了终端模块xterm.js
+- 使用了express-ws 的Websocket模块
+- 使用了net标准库访问telnet，就足够了
 
 多用户情况下的WebSocket实例和Telnet实例匹配这块，花费了不少时间，但是其实非常简单，就是ws.telnet = telnet，把telnet实例存到ws内，之后就用ws内的telnet即可。
 
