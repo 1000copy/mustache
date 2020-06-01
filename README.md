@@ -1,12 +1,12 @@
 # mustache
 
-这个项目想要演示两个方法，一个是执行自动化的OLT telnet的方法，一个是在Web浏览器内创建访问telnet终端的方法。
+这个项目想要演示两个方法，一个是执行自动化的OLT telnet的方法。
 
     node init 
     
 会执行脚本，脚本文件样本在[script](data/huawei.cmd),参数文件在[options](data/huawei.json)
 
-执行
+另外一个是在Web浏览器内创建访问telnet终端的方法,执行
 
    node index.js
 
